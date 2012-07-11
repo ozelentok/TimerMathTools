@@ -34,6 +34,8 @@ var mathSolver = {
 		return solutions;
 	}, // solveQuadric
 	
+	
+	
 	// Returs binomial probability
 	calcBinominal: function(p, n, k) {
 		// returns binomial coefficient
@@ -63,6 +65,9 @@ var mathSolver = {
 		return nChooseK(n, k) * Math.pow(p, k) * Math.pow(1 - p, n - k);
 	} // calcBinominal
 };
+
+
+
 
 var passGen = {
 	
@@ -107,14 +112,16 @@ var passGen = {
 	}
 };
 
+
+
 // checks if input boxes are vaild
 var boxValidator = {
 
 	checkQuadBoxes: function() {
 		var a, b, c;
-		a = parseFloat(document.getElementById("a_eq").value);
-		b = parseFloat(document.getElementById("b_eq").value);
-		c = parseFloat(document.getElementById("c_eq").value);
+		a = parseFloat(document.getElementById("a_quadeq").value);
+		b = parseFloat(document.getElementById("b_quadeq").value);
+		c = parseFloat(document.getElementById("c_quadeq").value);
 		if (isNaN(a) || isNaN(b) || isNaN(c)) {
 			document.getElementById("quadErrorMessage").innerHTML = "ERROR! Numbers Only!";
 			document.getElementById("quadResults").innerHTML = "";
@@ -134,11 +141,13 @@ var boxValidator = {
 		}
 	}, // checkQuadBoxes
 	
+	
+	
 	checkBinomialBoxes: function() {
 		var p, n, k;
 		p = parseFloat(document.getElementById("prob").value);
 		n = parseFloat(document.getElementById("trials").value);
-		k = parseFloat(document.getElementById("success").value);
+		k = parseFloat(document.getElementById("successes").value);
 		if (isNaN(p) || isNaN(n) || isNaN(k)) {
 			document.getElementById("bionErrorMessage").innerHTML = "ERROR! Numbers Only!";
 			document.getElementById("bionResult").innerHTML = "";
@@ -153,7 +162,9 @@ var boxValidator = {
 			document.getElementById("bionResult").innerHTML = "Binomial probability: " + result.toFixed(5);
 		}
 	}, // checkBinomialBoxes
-	
+
+
+
 	checkPassGenBoxes: function() {
 		var lowcase, upcase, nums;
 		lowcase = document.getElementById("lcase").checked;
