@@ -177,7 +177,7 @@ var boxValidator = {
 		else {
 			var passLen = parseInt(document.getElementById("plen").value);
 			if(isNaN(passLen) || passLen <= 0) {
-				document.getElementById("passGenErrorMessage").innerHTML = "ERROR! Non-Negative Integers Only!"
+				document.getElementById("passGenErrorMessage").innerHTML = "ERROR! Positive Integers Only!"
 				document.getElementById("passGenResults").innerHTML = "";
 			}
 			else {
