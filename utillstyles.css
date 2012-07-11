@@ -1,0 +1,54 @@
+body {
+	color:#fff;
+	font-family:ubuntu, arial, sans-serif;
+	background-color:#5077aa;
+	text-shadow:-1px 1px 1px #000;
+	font-size:1.3em;
+	margin-left: 0;
+}
+
+h1 {
+	text-decoration:underline;
+	text-shadow:-2px 2px 3px #000;
+	margin: 25px 5px;
+}
+h2 {
+	margin: 15px 0px;
+}
+.tools {
+	margin:5px 5px 50px 15px;
+}
+footer {
+	background: #30579a;
+	min-width:100%;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+	padding: 0px 4px 4px 8px;
+}
+footer p {
+	font-size: 0.6em;
+	margin: 6px 1px;
+}
+
+#quadEquation {
+	height: 10em;
+}
+#probabilityCalc{
+	height: 8em;
+}
+#passGenerator {
+	height: 8em;
+}
+
+.numericBox {
+	width: 4em;
+}
+.allResults {
+	color: #0f0;
+}
+.errorBoxes {
+	color:#f00;
+	font-size:130%;
+	vertical-align:middle;
+}
+

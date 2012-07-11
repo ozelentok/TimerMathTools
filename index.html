@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Oz's Utilities</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="utillstyles.css">
+		<script type="text/javascript" src="utillscript.js"></script>
+	</head>
+	<body>
+		<h1>Oz Utills</h1>
+		
+		<div class="tools">
+		<div id="quadEquation">
+			<h2>Quadric Equation Solver <br> ax^2 + bx + c</h2>
+			
+			a: <input type="text" id="a_eq" class="numericBox">
+			b: <input type="text" id="b_eq" class="numericBox">
+			c: <input type="text" id="c_eq" class="numericBox">
+			<input type="button" value="Solve" onclick="boxValidator.checkQuadBoxes();">
+			<span class="errorBoxes" id="quadErrorMessage"></span>
+			<br>
+			<span class="allResults" id="quadResults"></span>
+		</div>
+		
+		
+		<div id="probabilityCalc">
+			<h2>Binomial Distribution Calculator</h2>
+			
+			Base probability : <input type="text" id="prob" class="numericBox">
+			N trials: <input type="text" id="trials" class="numericBox">
+			K success: <input type="text" id="success" class="numericBox">
+			<input type="button" value="Calculate" onclick="boxValidator.checkBinomialBoxes();">
+			<span class="errorBoxes" id="bionErrorMessage"></span>
+			<br>
+			<span class="allResults" id="bionResult"></span>
+		</div>
+		
+		<div id="passGenerator">
+			<h2>Password Generator</h2>
+			
+			Password Length: <input type="text" id="plen" class="numericBox">
+			<br>
+			<input type="checkbox" id="lcase" checked="checked"> Lowercase
+			<input type="checkbox" id="ucase" checked="checked"> Uppercase
+			<input type="checkbox" id="nums" checked="checked"> Numbers
+			<input type="button" value="Generate" onclick="boxValidator.checkPassGenBoxes();">
+			<span class="errorBoxes" id="passGenErrorMessage"></span>
+			<br>
+			<span class="allResults" id="passGenResults"></span>
+		</div>
+		</div>
+		
+		<footer>
+			<p>Copyrights &#xA9 Oz Elentok. All Rights Reserved.</p>
+		</footer>
+
+		
+	</body>
+</html>
