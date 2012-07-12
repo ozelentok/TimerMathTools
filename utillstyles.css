@@ -39,6 +39,9 @@ footer p {
 #passGenerator {
 	height: 8em;
 }
+#unitConverter {
+	height: 8em;
+}
 
 .numericBox {
 	width: 4em;

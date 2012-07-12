@@ -113,9 +113,44 @@ var passGen = {
 };
 
 
+var unitConverter = {
+
+	unitBank: {	'len': { 'm': 1, 'km': 1E3, 'cm': 1E-2, 'mm': 1E-3, 'in': 2.54E-2, 'foot': 0.3048, 'yard': 0.9144, 'mile': 1609}, 
+							'mass':	{ 'ton':1E3, 'kg': 1, 'g': 1E-3, 'mg': 1E-6, 'oz':28E-3, 'lb': 0.4536},
+							'time':	{	'h': 3600, 'min': 60, 'sec': 1}
+						},
+	
+	// unitName - name of the unit to find in unitBank
+	// if found, returns the type of the unit
+	// else, returns null
+	findType: function(unitName) {
+		for (var unitType in this.unitBank) {
+			for(var unit in this.unitBank[unitType]) {
+				if(unit == unitName) {
+					return unitType;
+				}
+			}
+		}
+		return null;
+	},
+	
+	
+	// type - base quantitiy
+	// sourceUnit, resultUnit - name of the units
+	// sourceValue - numeric value of the sourceUnit
+	// returns the value of sourceValue in result unit
+	calcOutUnit: function(type, sourceUnit, resultUnit, sourceValue) {
+		var resultValue = sourceValue
+		resultValue *= this.unitBank[type][sourceUnit]; // turn value to it's according SI unit
+		resultValue /= this.unitBank[type][resultUnit]; // turn value to result unit
+		return resultValue;
+	}
+	
+};
 
 // checks if input boxes are vaild
 var boxValidator = {
+
 
 	checkQuadBoxes: function() {
 		var a, b, c;
@@ -184,6 +219,38 @@ var boxValidator = {
 				var passw = passGen.generate(passLen, lowcase, upcase, nums);
 				document.getElementById("passGenErrorMessage").innerHTML = "";
 				document.getElementById("passGenResults").innerHTML = passw;
+			}
+		}
+	}, // checkPassGenBoxes
+	
+	convPattern: /(\d+\.?\d*)\s+(\w+)\s+to\s+(\w+)/,
+	
+	checkConvertBoxes: function() {
+		var text = document.getElementById("convText").value;
+		var patResult = text.match(this.convPattern);
+		console.log(patResult);
+		if(!patResult) {
+			document.getElementById("convertErrorMessage").innerHTML = "ERROR! Incorrect Format";
+			document.getElementById("convertResults").innerHTML = "";
+		}
+		else {
+			var number = parseFloat(patResult[1]);
+			var fromUnit = patResult[2];
+			var toUnit = patResult[3];
+			var fromType = unitConverter.findType(fromUnit);
+			var toType = unitConverter.findType(toUnit);
+			if(!fromType || !toType) {
+				document.getElementById("convertErrorMessage").innerHTML = "ERROR! Unsupported Units";
+				document.getElementById("convertResults").innerHTML = "";
+			}
+			else if(fromType != toType) {
+				document.getElementById("convertErrorMessage").innerHTML = "ERROR! Units from diffrent base quantities";
+				document.getElementById("convertResults").innerHTML = "";
+			}
+			else {
+				document.getElementById("convertErrorMessage").innerHTML = "";
+				var resultVal = unitConverter.calcOutUnit(fromType, fromUnit, toUnit, number);
+				document.getElementById("convertResults").innerHTML = resultVal + " " + toUnit;
 			}
 		}
 	}
