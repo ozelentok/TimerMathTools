@@ -226,16 +226,11 @@ var boxValidator = {
 	
 	
 	
-	
-	
-	
-	
 	convPattern: /(\d+\.?\d*)\s*(\w+)\s+to\s+(\w+)/,
 	
 	checkConvertBoxes: function() {
 		var text = document.getElementById("convText").value;
 		var patResult = text.match(this.convPattern);
-		console.log(patResult);
 		if(!patResult) {
 			document.getElementById("convertErrorMessage").innerHTML = "ERROR! Incorrect Format";
 			document.getElementById("convertResults").innerHTML = "";
