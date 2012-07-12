@@ -13,7 +13,7 @@ h1 {
 	margin: 25px 15px;
 }
 h2 {
-	margin: 15px 0px;
+	margin-bottom:15px;
 }
 .tools {
 	margin:5px 5px 50px 15px;
@@ -43,6 +43,14 @@ footer p {
 	height: 8em;
 }
 
+#convFormat {
+	margin-top:0px;
+	margin-bottom:10px;
+	font-size: 0.7em;
+	font-style:italic;
+
+
+}
 .numericBox {
 	width: 4em;
 }
@@ -51,7 +59,7 @@ footer p {
 }
 .errorBoxes {
 	color:#f00;
-	font-size:130%;
+	font-size:1.3em;
 	vertical-align:middle;
 }
 

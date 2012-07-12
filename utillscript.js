@@ -223,7 +223,14 @@ var boxValidator = {
 		}
 	}, // checkPassGenBoxes
 	
-	convPattern: /(\d+\.?\d*)\s+(\w+)\s+to\s+(\w+)/,
+	
+	
+	
+	
+	
+	
+	
+	convPattern: /(\d+\.?\d*)\s*(\w+)\s+to\s+(\w+)/,
 	
 	checkConvertBoxes: function() {
 		var text = document.getElementById("convText").value;
