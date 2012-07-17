@@ -116,8 +116,10 @@ var passGen = {
 var unitConverter = {
 
 	unitBank: {	'len': { 'm': 1, 'km': 1E3, 'cm': 1E-2, 'mm': 1E-3, 'in': 2.54E-2, 'foot': 0.3048, 'yard': 0.9144, 'mile': 1609}, 
+							'area': { 'm2': 1, 'km2': 1E9, 'cm2': 1E-4, 'mm2': 1E-9, 'in2': 6.4516E-4, 'foot2': 0.0929, 'yard2': 0.8361, 'mile2': 2.5888E6},
+							'volume': { 'm3': 1, 'km3': 1E27, 'cm3': 1E-8, 'mm3': 1E-27, 'in3': 1.6387E-5, 'foot3': 2.8316E-2, 'yard3': 0.76455, 'mile3': 4.165E9},
 							'mass':	{ 'ton':1E3, 'kg': 1, 'g': 1E-3, 'mg': 1E-6, 'oz':28E-3, 'lb': 0.4536},
-							'time':	{	'h': 3600, 'min': 60, 'sec': 1}
+							'time':	{	'h': 3600, 'min': 60, 'sec': 1},
 						},
 	
 	// unitName - name of the unit to find in unitBank
