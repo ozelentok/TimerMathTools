@@ -6,7 +6,9 @@ body {
 	font-size:1.3em;
 	margin-left: 0;
 }
-
+a {
+	color:#fff;
+}
 h1 {
 	text-decoration:underline;
 	text-shadow:-2px 2px 3px #000;
@@ -15,8 +17,10 @@ h1 {
 h2 {
 	margin-bottom:15px;
 }
-.tools {
-	margin:5px 5px 50px 15px;
+#clock {
+	margin: 50px auto;
+	text-align: center;
+	font-size: 100px;
 }
 footer {
 	background: #30579a;
@@ -29,27 +33,20 @@ footer p {
 	font-size: 0.6em;
 	margin: 6px 1px;
 }
-
+.tools {
+	margin:5px 5px 50px 15px;
+}
 #quadEquation {
 	height: 10em;
 }
-#probabilityCalc{
+#probabilityCalc, #passGenerator, #unitConverter {
 	height: 8em;
 }
-#passGenerator {
-	height: 8em;
-}
-#unitConverter {
-	height: 8em;
-}
-
 #convFormat {
 	margin-top:0px;
 	margin-bottom:10px;
 	font-size: 0.7em;
 	font-style:italic;
-
-
 }
 .numericBox {
 	width: 4em;
