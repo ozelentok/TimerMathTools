@@ -2,6 +2,9 @@
 
 var timeController = {
 	
+	timerInt: null,
+	targetTime: null,
+	
 	startCountdown : function() {
 		var regResults = /\?tc=(\d+)-(\d+)-(\d+)/.exec(window.location.href);
 		if (regResults == null) {
@@ -22,12 +25,10 @@ var timeController = {
 		document.getElementById("minBox").innerHTML = this.formatNum(mins);
 		document.getElementById("secBox").innerHTML = this.formatNum(secs);
 		this.targetTime = new Date(Date.now() + (((hours * 60 + mins) * 60 + secs) * 1000));
-		console.log(new Date());
-		console.log(this.targetTime);
 	},
 	
 	formatNum : function(num) {
-		if(num >= 10)
+		if (num >= 10)
 			return num.toString();
 		return ('0' + num.toString());
 	},
@@ -35,7 +36,7 @@ var timeController = {
 	tick : function() {
 		var currentTime = new Date();
 		var diffTime = new Date(this.targetTime.getTime() - currentTime.getTime());
-		if(diffTime < 0) {
+		if (diffTime < 0) {
 			diffTime = new Date(0);
 			window.clearInterval(timerInt);
 		}
@@ -47,5 +48,5 @@ var timeController = {
 };
 
 timeController.startCountdown();
-var timerInt = window.setInterval("timeController.tick()", 400);
+timeController.timerInt = window.setInterval("timeController.tick()", 400);
 
