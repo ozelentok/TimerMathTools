@@ -39,13 +39,14 @@ var timeController = {
 		var sec;
 		document.getElementById("hourBox").innerHTML = this.formatNum(diffTime.getUTCHours());
 		document.getElementById("minBox").innerHTML = this.formatNum(diffTime.getUTCMinutes());
-		document.getElementById("secBox").innerHTML = this.formatNum(diffTime.getUTCSeconds());
+		sec = diffTime.getUTCSeconds();
+		document.getElementById("secBox").innerHTML = this.formatNum(sec);
 		
 		if (sec == 0 || diffTime.getTime() <= 0) {
 			window.clearInterval(this.timerInt);
 		}
 		
-	} // tick()
+	} // tick end
 };
 timeController.startCountdown();
 timeController.timerInt = window.setInterval("timeController.tick()", 450);
