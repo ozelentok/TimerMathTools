@@ -9,7 +9,7 @@ var timeController = {
 		var regResults = /\?tc=(\d+)-(\d+)-(\d+)/.exec(window.location.href);
 		if (regResults == null) {
 			hours = 0;
-			mins = 5;
+			mins = 15;
 			secs = 0;
 		}
 		else {
@@ -36,17 +36,17 @@ var timeController = {
 	tick : function() {
 		var currentTime = new Date();
 		var diffTime = new Date(this.targetTime.getTime() - currentTime.getTime());
-		if (diffTime < 0) {
-			diffTime = new Date(0);
-			window.clearInterval(timerInt);
-		}
+		var sec;
 		document.getElementById("hourBox").innerHTML = this.formatNum(diffTime.getUTCHours());
 		document.getElementById("minBox").innerHTML = this.formatNum(diffTime.getUTCMinutes());
 		document.getElementById("secBox").innerHTML = this.formatNum(diffTime.getUTCSeconds());
-	}
-	
+		
+		if (sec == 0 || diffTime.getTime() <= 0) {
+			window.clearInterval(this.timerInt);
+		}
+		
+	} // tick()
 };
-
 timeController.startCountdown();
-timeController.timerInt = window.setInterval("timeController.tick()", 400);
+timeController.timerInt = window.setInterval("timeController.tick()", 450);
 
