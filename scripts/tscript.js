@@ -40,7 +40,7 @@ var timeController = {
 		document.getElementById("minBox").innerHTML = this.formatNum(diffTime.getUTCMinutes());
 		document.getElementById("secBox").innerHTML = this.formatNum(diffTime.getUTCSeconds());
 		
-		if (diffTime.getTime() <= 0) {
+		if (diffTime.getTime() < 1000) {
 			window.clearInterval(this.timerInt);
 		}
 		
