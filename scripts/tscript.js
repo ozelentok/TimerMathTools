@@ -36,13 +36,11 @@ var timeController = {
 	tick : function() {
 		var currentTime = new Date();
 		var diffTime = new Date(this.targetTime.getTime() - currentTime.getTime());
-		var sec;
 		document.getElementById("hourBox").innerHTML = this.formatNum(diffTime.getUTCHours());
 		document.getElementById("minBox").innerHTML = this.formatNum(diffTime.getUTCMinutes());
-		sec = diffTime.getUTCSeconds();
-		document.getElementById("secBox").innerHTML = this.formatNum(sec);
+		document.getElementById("secBox").innerHTML = this.formatNum(diffTime.getUTCSeconds());
 		
-		if (sec == 0 || diffTime.getTime() <= 0) {
+		if (diffTime.getTime() <= 0) {
 			window.clearInterval(this.timerInt);
 		}
 		
