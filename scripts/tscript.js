@@ -9,8 +9,8 @@ var timeController = {
 		var regResults = /\?tc=(\d+)-(\d+)-(\d+)/.exec(window.location.href);
 		if (regResults == null) {
 			hours = 0;
-			mins = 15;
-			secs = 0;
+			mins = 0;
+			secs = 10;
 		}
 		else {
 			var hours = parseInt(regResults[1]);
@@ -42,6 +42,8 @@ var timeController = {
 		
 		if (diffTime.getTime() < 1000) {
 			window.clearInterval(this.timerInt);
+			var alarm = new Audio("../audio/alarm.ogg");
+			alarm.play();
 		}
 		
 	} // tick end
