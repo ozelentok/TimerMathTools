@@ -6,10 +6,10 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<h1>Oz Utills</h1>
 		
-		<div class="tools">
-			<div id="quadEquation">
+		<div id="wrapper">
+			<h1>Utills</h1>
+			<div class="utill" id="quadEquation">
 				<h2>Quadric Equation Solver <br> ax^2 + bx + c</h2>
 			
 				<label for="a_quadeq">a:</label>
@@ -22,13 +22,13 @@
 				<input type="text" id="c_quadeq" class="numericBox">
 			
 				<input type="button" value="Solve" onclick="boxValidator.checkQuadBoxes();">
-				<span class="errorBoxes" id="quadErrorMessage"></span>
 				<br>
-				<span class="allResults" id="quadResults"></span>
+				<span class="error" id="quadErrorMessage"></span>
+				<span class="result" id="quadResults"></span>
 			</div>
 		
 		
-			<div id="probabilityCalc">
+			<div class="utill" id="probabilityCalc">
 				<h2>Binomial Distribution Calculator</h2>
 			
 				<label for="prob">Base probability:</label>
@@ -41,12 +41,12 @@
 				<input type="text" id="successes" class="numericBox">
 			
 				<input type="button" value="Calculate" onclick="boxValidator.checkBinomialBoxes();">
-				<span class="errorBoxes" id="bionErrorMessage"></span>
 				<br>
-				<span class="allResults" id="bionResult"></span>
+				<span class="error" id="bionErrorMessage"></span>
+				<span class="result" id="bionResult"></span>
 			</div>
 		
-			<div id="passGenerator">
+			<div class="utill" id="passGenerator">
 				<h2>Password Generator</h2>
 			
 				<label for="plen">Password Length:</label>
@@ -63,21 +63,20 @@
 				<label for="nums">Numbers</label>
 			
 				<input type="button" value="Generate" onclick="boxValidator.checkPassGenBoxes();">
-				<span class="errorBoxes" id="passGenErrorMessage"></span>
 				<br>
-				<span class="allResults" id="passGenResults"></span>
+				<span class="error" id="passGenErrorMessage"></span>
+				<span class="result" id="passGenResults"></span>
 			</div>
 			
-			<div id="unitConverter">
+			<div class="utill" id="unitConverter">
 				<h2>Unit Converter</h2>
 				<p id="convFormat">eg. 15 km to m</p>
 				
 				<input type="text" id="convText">
 				<input type="button" value="Convert" onclick="boxValidator.checkConvertBoxes();">
-				<span class="errorBoxes" id="convertErrorMessage"></span>
 				<br>
-				<span class="allResults" id="convertResults"></span>
-			
+				<span class="error" id="convertErrorMessage"></span>
+				<span class="result" id="convertResults"></span>
 			</div>
 			
 			<h2><a href="./timer?tc=0-10-0">Timer</a></h2>

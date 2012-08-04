@@ -6,21 +6,32 @@ body {
 	font-size:1.3em;
 	margin-left: 0;
 }
-a {
-	color:#fff;
+#wrapper {
+	margin:0 auto;
+	padding:15px 20px;
+	width:700px;
+	box-shadow:0 0 4px #000;
 }
 h1 {
 	text-decoration:underline;
 	text-shadow:-2px 2px 3px #000;
-	margin: 25px 15px;
+	margin:0 0 30px 0;
 }
 h2 {
 	margin-bottom:15px;
 }
-#clock {
-	margin: 50px auto;
-	text-align: center;
-	font-size: 100px;
+.utill {
+	margin:0 0 80px 0;
+}
+.numericBox {
+	width: 4em;
+}
+span.result {
+	color: #0f0;
+}
+span.error {
+	color:#f00;
+	vertical-align:middle;
 }
 footer {
 	background: #30579a;
@@ -33,30 +44,15 @@ footer p {
 	font-size: 0.6em;
 	margin: 6px 1px;
 }
-.tools {
-	margin:5px 5px 50px 15px;
-}
-#quadEquation {
-	height: 10em;
-}
-#probabilityCalc, #passGenerator, #unitConverter {
-	height: 8em;
-}
 #convFormat {
 	margin-top:0px;
 	margin-bottom:10px;
 	font-size: 0.7em;
 	font-style:italic;
 }
-.numericBox {
-	width: 4em;
-}
-.allResults {
-	color: #0f0;
-}
-.errorBoxes {
-	color:#f00;
-	font-size:1.3em;
-	vertical-align:middle;
+#clock {
+	margin: 50px auto;
+	text-align: center;
+	font-size: 100px;
 }
 
