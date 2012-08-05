@@ -48,9 +48,27 @@ footer {
 	font-size: 0.7em;
 	font-style:italic;
 }
-#clock {
+#selectTime, #dispTime {
+	display:block;
 	margin: 50px auto;
 	text-align: center;
 	font-size: 100px;
+}
+#dispTime {
+	display: none;
+}
+#toggler {
+	width:100%;
+}
+select {
+	font-size:1em;
+	background:transparent;
+	color:white;
+	border:none;
+}
+option {
+	background-color:black;
+	padding:0;
+	margin:0;
 }
 
