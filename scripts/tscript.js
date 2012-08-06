@@ -40,7 +40,7 @@ var timeController = {
 			this.hours += 24;
 		}
 		UIManager.updateOutput();
-		if (this.sec == 0 && this.hours + this.mins == 0) {
+		if (this.secs == 0 && this.hours + this.mins == 0) {
 			window.clearInterval(this.timerInt);
 			var alarm = new Audio("../audio/alarm.ogg");
 			alarm.play();
