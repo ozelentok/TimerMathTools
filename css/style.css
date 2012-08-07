@@ -10,7 +10,7 @@ body {
 #wrapper {
 	margin:0 auto;
 	padding:15px 20px;
-	width:700px;
+	width:800px;
 	box-shadow:0 0 4px #000;
 }
 h1 {
@@ -36,7 +36,7 @@ span.error {
 footer {
 	margin:0 auto;
 	padding:10px 20px;
-	width:700px;
+	width:800px;
 	background-color: rgba(0, 0, 0, 0.2);
 	text-align:center;
 	font-size:0.7em;

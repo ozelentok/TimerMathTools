@@ -1,6 +1,5 @@
 "use strict";
 var mathSolver = {
-	
 	// Returns solutions to quadric equation
 	solveQuadric: function (a, b, c) {
 		var solutions = [];
@@ -10,9 +9,9 @@ var mathSolver = {
 				solutions[0] = (-c / b);
 			}
 		}
-    else if (b == 0) { // ax^2 + c
-    	temp = (-c / a);
-    	if (temp >= 0) { 
+		else if (b == 0) { // ax^2 + c
+			temp = (-c / a);
+			if (temp >= 0) { 
 				solutions[0] = Math.sqrt(temp);
 				solutions[1] = -solutions[0];
 			}
@@ -25,7 +24,7 @@ var mathSolver = {
 			temp = b * b - 4 * a * c;
 			if (temp >= 0) {
 				temp = Math.sqrt(temp);
-      	solutions[0] = (-b + temp) / (2 * a);
+				solutions[0] = (-b + temp) / (2 * a);
 				if (temp > 0) {
 					solutions[1] = (-b - temp) / (2 * a);
 				}
