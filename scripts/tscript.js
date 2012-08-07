@@ -12,9 +12,13 @@ var timeController = {
 		this.hours = parseInt(document.getElementById("hourSelect").value);
 		this.mins = parseInt(document.getElementById("minSelect").value);
 		this.secs = parseInt(document.getElementById("secSelect").value);
+		if (this.secs == 0 && this.hours + this.mins == 0) {
+			return false;
+		}
 		this.targetTime = new Date(Date.now() + (((this.hours * 60 + this.mins) * 60 + this.secs) * 1000));
 		this.timerInt = window.setInterval(function() {
 			timeController.tick(); } , 1000);
+		return true;
 	},
 	
 	stopCountdown : function() {
@@ -77,11 +81,12 @@ var UIManager = {
 	},
 	toggleCountdown : function() {
 		if (this.visible == 's') {
-			timeController.startCountdown();
-			this.timeSelect.style.display = "none";
-			this.timeDisplay.style.display = "block";
-			this.buttonToggle.value = "Stop Countdown";
-			this.visible = 'd';
+			if (timeController.startCountdown()) {
+				this.timeSelect.style.display = "none";
+				this.timeDisplay.style.display = "block";
+				this.buttonToggle.value = "Stop Countdown";
+				this.visible = 'd';
+			}
 		}
 		else {
 			timeController.stopCountdown();
