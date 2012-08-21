@@ -9,9 +9,9 @@ var timeController = {
 	secs: 0,
 	
 	startCountdown : function() {
-		this.hours = parseInt(document.getElementById("hourSelect").value);
-		this.mins = parseInt(document.getElementById("minSelect").value);
-		this.secs = parseInt(document.getElementById("secSelect").value);
+		this.hours = parseInt(document.getElementById("hourSelect").value, 10);
+		this.mins = parseInt(document.getElementById("minSelect").value, 10);
+		this.secs = parseInt(document.getElementById("secSelect").value, 10);
 		if (this.secs == 0 && this.hours + this.mins == 0) {
 			return false;
 		}
