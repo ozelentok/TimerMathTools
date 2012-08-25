@@ -33,7 +33,7 @@ span.result {
 span.error {
 	color:#f00;
 }
-footer {
+#footer {
 	margin:0 auto;
 	padding:10px 20px;
 	width:800px;
