@@ -12,7 +12,7 @@ body {
 	border:1px solid black;
 	border-top:none;
 	border-bottom:none;
-	max-width:500px;
+	max-width:900px;
 }
 #header {
 	background:rgba(0, 0, 0, 0.6);	
@@ -20,7 +20,7 @@ body {
 }
 #nav {
 	background:rgba(0, 0, 0, 0.4);
-	max-width:540px;
+	max-width:940px;
 }
 #wrapper {
 	background:rgba(0, 0, 0, 0.1);
