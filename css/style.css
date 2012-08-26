@@ -10,11 +10,10 @@ body {
 #overlord {
 	margin:auto;
 	padding:0;
-	width:540px;
+	max-width:540px;
 }
 #header, #nav, #footer, #wrapper {
 	margin:0 auto;
-	max-width:500px;
 	border:1px solid black;
 	border-top:none;
 	border-bottom:none;
@@ -24,7 +23,6 @@ body {
 	padding:10px 20px;
 }
 #nav {
-	max-width:540px;
 	background:rgba(0, 0, 0, 0.4);	
 }
 #wrapper {
