@@ -7,22 +7,20 @@ body {
 	font-size:1.4em;
 	margin-top:0;
 }
-#overlord {
-	margin:auto;
-	width:540px;
-}
 #header, #nav, #footer, #wrapper {
 	margin:0 auto;
 	border:1px solid black;
 	border-top:none;
 	border-bottom:none;
+	max-width:500px;
 }
 #header {
 	background:rgba(0, 0, 0, 0.6);	
 	padding:10px 20px;
 }
 #nav {
-	background:rgba(0, 0, 0, 0.4);	
+	background:rgba(0, 0, 0, 0.4);
+	max-width:540px;
 }
 #wrapper {
 	background:rgba(0, 0, 0, 0.1);
