@@ -7,19 +7,64 @@ body {
 	font-size:1.4em;
 	margin-top:0;
 }
-#wrapper {
+
+#header, #nav, #footer, #wrapper {
 	margin:0 auto;
-	padding:15px 20px;
-	width:800px;
-	box-shadow:0 0 4px #000;
+	width:900px;
+	border:1px solid black;
+	border-top:none;
+	border-bottom:none;
+}
+#header {
+	background:rgba(0, 0, 0, 0.6);	
+	padding:10px 20px;
+}
+#nav {
+	width:940px;
+	background:rgba(0, 0, 0, 0.4);	
+}
+#wrapper {
+	background:rgba(0, 0, 0, 0.1);
+	padding:10px 20px;
+}
+#footer {
+	padding:10px 20px;
+	background-color: rgba(0, 0, 0, 0.3);
+	text-align:center;
+	font-size:0.7em;
+	border:1px solid black;
 }
 h1 {
 	text-decoration:underline;
 	text-shadow:-2px 2px 3px #000;
-	margin:0 0 30px 0;
+	margin:0 0 10px 0;
 }
 h2 {
-	margin-bottom:15px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#nav ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#nav ul li {
+	display:inline-block;
+}
+#nav a {
+	text-decoration:none;
+	padding:10px 10px;
+	min-width:100px;
+	display:inline-block;
+	text-align:center;
+	color:white;
+	border-left:1px solid gray;
+}
+#nav a#first {
+	border-left:none;
+}
+#nav a:hover, #nav a:active {
+	background:cyan;
 }
 .utill {
 	margin:0 0 80px 0;
@@ -32,15 +77,6 @@ span.result {
 }
 span.error {
 	color:#f00;
-}
-#footer {
-	margin:0 auto;
-	padding:10px 20px;
-	width:800px;
-	background-color: rgba(0, 0, 0, 0.2);
-	text-align:center;
-	font-size:0.7em;
-	border: solid 1px black;
 }
 #convFormat {
 	margin-top:0px;
