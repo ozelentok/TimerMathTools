@@ -9,8 +9,7 @@ body {
 }
 #overlord {
 	margin:auto;
-	padding:0;
-	max-width:540px;
+	width:540px;
 }
 #header, #nav, #footer, #wrapper {
 	margin:0 auto;
