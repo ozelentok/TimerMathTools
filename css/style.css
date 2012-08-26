@@ -10,7 +10,7 @@ body {
 
 #header, #nav, #footer, #wrapper {
 	margin:0 auto;
-	width:900px;
+	max-width:500px;
 	border:1px solid black;
 	border-top:none;
 	border-bottom:none;
@@ -20,7 +20,7 @@ body {
 	padding:10px 20px;
 }
 #nav {
-	width:940px;
+	max-width:540px;
 	background:rgba(0, 0, 0, 0.4);	
 }
 #wrapper {
