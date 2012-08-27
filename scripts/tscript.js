@@ -135,5 +135,6 @@ var UIManager = {
 	}
 
 };
+document.body.onload=function() { UIManager.resizeTimerFont(); };
 document.body.onresize=function() { UIManager.resizeTimerFont(); };
 
