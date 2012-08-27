@@ -4,17 +4,16 @@ var timeController = {
 	
 	timerInt: null,
 	targetTime: null,
+	paused: true,
 	hours: 0,
 	mins: 0,
 	secs: 0,
 	
 	startCountdown : function() {
-		this.hours = parseInt(document.getElementById("hourSelect").value, 10);
-		this.mins = parseInt(document.getElementById("minSelect").value, 10);
-		this.secs = parseInt(document.getElementById("secSelect").value, 10);
 		if (this.secs == 0 && this.hours + this.mins == 0) {
 			return false;
 		}
+		this.paused = false;
 		this.targetTime = new Date(Date.now() + (((this.hours * 60 + this.mins) * 60 + this.secs) * 1000));
 		this.timerInt = window.setInterval(function() {
 			timeController.tick(); } , 1000);
@@ -22,8 +21,9 @@ var timeController = {
 	},
 	
 	stopCountdown : function() {
-		this.targetTime = null;
 		window.clearInterval(this.timerInt);
+		this.targetTime = null;
+		this.paused = true;
 	},
 	
 	
@@ -55,9 +55,9 @@ var timeController = {
 
 var UIManager = {
 	
-	visible: 's', // 's' - select, 'd' - display
-	timeSelect: document.getElementById("selectTime"),
-	timeDisplay: document.getElementById("dispTime"),
+	hourOut: document.getElementById("hourDisp"),
+	minOut: document.getElementById("minDisp"),
+	secOut: document.getElementById("secDisp"),
 	buttonToggle: document.getElementById("toggler"),
 
 	formatNum : function(num) {
@@ -67,36 +67,59 @@ var UIManager = {
 	},
 
 	updateOutput: function() {
-		if (this.visible == 'd') {
-			document.getElementById("hourDisp").innerHTML = this.formatNum(timeController.hours);
-			document.getElementById("minDisp").innerHTML = this.formatNum(timeController.mins);
-			document.getElementById("secDisp").innerHTML = this.formatNum(timeController.secs);
-		}
-		else {
-			document.getElementById("hourSelect").value = this.formatNum(timeController.hours);
-			document.getElementById("minSelect").value = this.formatNum(timeController.mins);
-			document.getElementById("secSelect").value = this.formatNum(timeController.secs);
-
-		}
+		this.hourOut.innerHTML = this.formatNum(timeController.hours);
+		this.minOut.innerHTML = this.formatNum(timeController.mins);
+		this.secOut.innerHTML = this.formatNum(timeController.secs);
 	},
-	toggleCountdown : function() {
-		if (this.visible == 's') {
+
+	toggleCountdown: function() {
+		if (timeController.paused) {
 			if (timeController.startCountdown()) {
-				this.timeSelect.style.display = "none";
-				this.timeDisplay.style.display = "block";
 				this.buttonToggle.value = "Stop Countdown";
-				this.visible = 'd';
 			}
 		}
 		else {
 			timeController.stopCountdown();
-			this.timeSelect.style.display = "block";
-			this.timeDisplay.style.display = "none";
 			this.buttonToggle.value = "Start Countdown";
-			this.visible = 's';
 		}
+	},
+	
+	// function called from clicks on time boxes
+	getHours: function() {
+		if (!timeController.paused) {
+			return;
+		}
+		var hours = parseInt(prompt("Enter Hours"), 10);
+		if (isNaN(hours)) {
+			hours = 0;
+		}
+		timeController.hours = hours;
+		this.updateOutput();
+	},
+
+	getMinutes: function() {
+		if (!timeController.paused) {
+			return;
+		}
+		var minutes = parseInt(prompt("Enter Minutes"), 10);
+		if (isNaN(minutes)) {
+			minutes = 0;
+		}
+		timeController.mins = minutes;
+		this.updateOutput();
+	},
+
+	getSeconds: function() {
+		if (!timeController.paused) {
+			return;
+		}
+		var seconds = parseInt(prompt("Enter Seconds"), 10);
+		if (isNaN(seconds)) {
+			seconds = 0;
+		}
+		timeController.secs = seconds;
 		this.updateOutput();
 	}
-	
+
 };
 

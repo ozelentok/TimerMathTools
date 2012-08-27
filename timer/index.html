@@ -19,15 +19,15 @@
 		</div>
 		<div id="wrapper">
 			<div id="dispTime">
-				<div id="hourDisp" class="timeBox">
+				<div class="timeBox" onclick="UIManager.getHours();">
 					<span class="timeHeader">Hours</span>
 					<span class="timeValue" id="hourDisp">00</span>
 				</div>
-				<div id="minDisp" class="timeBox">
+				<div class="timeBox" onclick="UIManager.getMinutes();">
 					<span class="timeHeader">Minutes</span>
 					<span class="timeValue" id="minDisp">00</span>
 				</div>
-				<div id="secDisp" class="timeBox lastBox">
+				<div class="timeBox lastBox" onclick="UIManager.getSeconds();">
 					<span class="timeHeader">Seconds</span>
 					<span class="timeValue" id="secDisp">00</span>
 				</div>
