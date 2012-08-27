@@ -119,6 +119,19 @@ var UIManager = {
 		}
 		timeController.secs = seconds;
 		this.updateOutput();
+	},
+
+	resizeTimerFont: function() {
+		if(window.innerWidth <= 450) {
+			hourOut.style.font-size = "60px";
+			minOut.style.font-size = "60px";
+			secOut.style.font-size = "60px";
+		}
+		else {
+			hourOut.style.font-size = "100px";
+			minOut.style.font-size = "100px";
+			secOut.style.font-size = "100px";
+		}
 	}
 
 };

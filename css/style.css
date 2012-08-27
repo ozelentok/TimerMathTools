@@ -4,7 +4,6 @@ body {
 	background-repeat:repeat;
 	color:#fff;
 	text-shadow:-1px 1px 1px #000;
-	font-size:1.4em;
 	margin-top:0;
 }
 #header, #nav, #footer, #wrapper {
@@ -99,7 +98,7 @@ span.error {
 	display:block;
 }
 .timeValue { 
-	font-size:500%;
+	font-size:100px;
 }
 #toggler {
 	width:100%;
