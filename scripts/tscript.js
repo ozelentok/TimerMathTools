@@ -123,16 +123,17 @@ var UIManager = {
 
 	resizeTimerFont: function() {
 		if(window.innerWidth <= 450) {
-			hourOut.style.font-size = "60px";
-			minOut.style.font-size = "60px";
-			secOut.style.font-size = "60px";
+			this.hourOut.className = "timeValueSmall"
+			this.minOut.className = "timeValueSmall"
+			this.secOut.className = "timeValueSmall"
 		}
 		else {
-			hourOut.style.font-size = "100px";
-			minOut.style.font-size = "100px";
-			secOut.style.font-size = "100px";
+			this.hourOut.className = "timeValue"
+			this.minOut.className = "timeValue"
+			this.secOut.className = "timeValue"
 		}
 	}
 
 };
+document.body.onresize=function() { UIManager.resizeTimerFont(); };
 
