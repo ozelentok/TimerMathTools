@@ -46,6 +46,7 @@ var timeController = {
 		UIManager.updateOutput();
 		if (this.secs == 0 && this.hours + this.mins == 0) {
 			window.clearInterval(this.timerInt);
+			UIManager.toggleCountdown();
 			var alarm = new Audio("../audio/alarm.ogg");
 			alarm.play();
 		}
