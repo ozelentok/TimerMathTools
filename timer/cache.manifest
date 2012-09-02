@@ -1,5 +1,6 @@
 CACHE MANIFEST
 ./index.html
-../css/style.css
-../scripts/tscript.js
 ../audio/alarm.ogg
+../css/style.css
+../css/metaltiles.jpg
+../scripts/tscript.js
