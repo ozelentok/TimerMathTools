@@ -91,7 +91,7 @@ var UIManager = {
 			return;
 		}
 		var hours = parseInt(prompt("Enter Hours"), 10);
-		if (isNaN(hours)) {
+		if (isNaN(hours) || hours < 0) {
 			hours = 0;
 		}
 		timeController.hours = hours;
@@ -103,7 +103,7 @@ var UIManager = {
 			return;
 		}
 		var minutes = parseInt(prompt("Enter Minutes"), 10);
-		if (isNaN(minutes)) {
+		if (isNaN(minutes) || minutes < 0) {
 			minutes = 0;
 		}
 		timeController.mins = minutes;
@@ -115,7 +115,7 @@ var UIManager = {
 			return;
 		}
 		var seconds = parseInt(prompt("Enter Seconds"), 10);
-		if (isNaN(seconds)) {
+		if (isNaN(seconds) || seconds < 0) {
 			seconds = 0;
 		}
 		timeController.secs = seconds;
