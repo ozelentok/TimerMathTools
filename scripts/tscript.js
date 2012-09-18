@@ -14,7 +14,7 @@ var timeController = {
 			return false;
 		}
 		this.paused = false;
-		this.targetTime = new Date(Date.now() + (((this.hours * 60 + this.mins) * 60 + this.secs) * 1000));
+		this.targetTime = new Date(Date.now() + (((this.hours * 60 + this.mins) * 60 + this.secs) * 1000) - 10);
 		this.timerInt = window.setInterval(function() {
 			timeController.tick(); } , 1000);
 		return true;
