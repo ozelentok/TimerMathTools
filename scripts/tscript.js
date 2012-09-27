@@ -125,30 +125,31 @@ var UIManager = {
 	// resize font when window width is small
 	resizeTimerFont: function() {
 		if(window.innerWidth <= 450) {
-			this.hourOut.className = "timeValueSmall"
-			this.minOut.className = "timeValueSmall"
-			this.secOut.className = "timeValueSmall"
+			this.hourOut.className = "timeValueSmall";
+			this.minOut.className = "timeValueSmall";
+			this.secOut.className = "timeValueSmall";
 		}
 		else {
-			this.hourOut.className = "timeValue"
-			this.minOut.className = "timeValue"
-			this.secOut.className = "timeValue"
+			this.hourOut.className = "timeValue";
+			this.minOut.className = "timeValue";
+			this.secOut.className = "timeValue";
 		}
 	},
 	
 	// change button style according to mode
-	toggleButtonStyle: function(mode) {
-		// 1 = pressed/down
-		// 0 = released/up
-		if(mode == 1) {
-			this.buttonToggle.className = "togglerDown"
-		}
-		else {
-			this.buttonToggle.className = "togglerUp";	
-		}
+	toButtonUp: function(button) {
+			button.className = "button buttonUp";	
+	},
+	toButtonDown: function(button) {
+			button.className = "button buttonDown";	
 	}
 
 };
-document.body.onload=function() { UIManager.resizeTimerFont(); };
-document.body.onresize=function() { UIManager.resizeTimerFont(); };
+(function() {
+	document.body.onload = function() { UIManager.resizeTimerFont(); };
+	document.body.onresize = function() { UIManager.resizeTimerFont(); };
+	UIManager.buttonToggle.onmouseup = function() { UIManager.toButtonUp(this) };
+	UIManager.buttonToggle.onmouseleave = function() { UIManager.toButtonUp(this) };
+	UIManager.buttonToggle.onmousedown = function() { UIManager.toButtonDown(this); };
+})();
 

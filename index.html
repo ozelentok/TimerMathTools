@@ -30,7 +30,7 @@
 				<label for="c_quadeq">c:</label>
 				<input type="text" id="c_quadeq" class="numericBox">
 			
-				<input type="button" value="Solve" onclick="boxValidator.checkQuadBoxes();">
+				<label class="button buttonUp" onclick="boxValidator.checkQuadBoxes();">Solve</label>
 				<br>
 				<span class="error" id="quadErrorMessage"></span>
 				<span class="result" id="quadResults"></span>
@@ -49,7 +49,7 @@
 				<label for="successes">K success:</label>
 				<input type="text" id="successes" class="numericBox">
 			
-				<input type="button" value="Calculate" onclick="boxValidator.checkBinomialBoxes();">
+				<label class="button buttonUp" onclick="boxValidator.checkBinomialBoxes();">Calculate</label>
 				<br>
 				<span class="error" id="bionErrorMessage"></span>
 				<span class="result" id="bionResult"></span>
@@ -71,7 +71,7 @@
 				<input type="checkbox" id="nums" checked="checked">
 				<label for="nums">Numbers</label>
 			
-				<input type="button" value="Generate" onclick="boxValidator.checkPassGenBoxes();">
+				<label class="button buttonUp" onclick="boxValidator.checkPassGenBoxes();">Generate</label>
 				<br>
 				<span class="error" id="passGenErrorMessage"></span>
 				<span class="result" id="passGenResults"></span>
@@ -82,7 +82,7 @@
 				<p id="convFormat">eg. 15 km to m</p>
 				
 				<input type="text" id="convText">
-				<input type="button" value="Convert" onclick="boxValidator.checkConvertBoxes();">
+				<label class="button buttonUp" onclick="boxValidator.checkConvertBoxes();">Convert</label>
 				<br>
 				<span class="error" id="convertErrorMessage"></span>
 				<span class="result" id="convertResults"></span>

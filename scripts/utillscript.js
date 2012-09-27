@@ -258,3 +258,23 @@ var boxValidator = {
 		}
 	}
 };
+
+var UIManager = {
+
+	// change button style according to mode
+	toButtonUp: function(button) {
+			button.className = "button buttonUp";	
+	},
+	toButtonDown: function(button) {
+			button.className = "button buttonDown";	
+	}
+};
+
+(function() {
+	var buttons = document.getElementsByClassName("button");
+	for (var i = 0; i < buttons.length; i += 1) {
+		buttons[i].onmouseup = function() { UIManager.toButtonUp(this) };
+		buttons[i].onmouseleave = function() { UIManager.toButtonUp(this) };
+		buttons[i].onmousedown = function() { UIManager.toButtonDown(this); };
+	}
+})();
