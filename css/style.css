@@ -104,5 +104,20 @@ span.error {
 	font-size:60px;
 }
 #toggler {
+	clear:both;
+	display:block;
 	width:100%;
+	text-align:center;
+	padding-top:2px;
+	padding-bottom:2px;
+	border: 1px solid black;
+	border-radius: 6px;
+	box-shadow: black 0 0 4px;
 }
+.togglerUp {
+	background-color:rgba(0, 0, 0, 0.5);
+}
+.togglerDown {
+	background-color:rgba(0, 0, 0, 0.7);
+}
+

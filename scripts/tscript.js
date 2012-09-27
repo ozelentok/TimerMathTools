@@ -76,12 +76,12 @@ var UIManager = {
 	toggleCountdown: function() {
 		if (timeController.paused) {
 			if (timeController.startCountdown()) {
-				this.buttonToggle.value = "Stop Countdown";
+				this.buttonToggle.innerHTML = "Stop Countdown";
 			}
 		}
 		else {
 			timeController.stopCountdown();
-			this.buttonToggle.value = "Start Countdown";
+			this.buttonToggle.innerHTML = "Start Countdown";
 		}
 	},
 	
@@ -122,6 +122,7 @@ var UIManager = {
 		this.updateOutput();
 	},
 
+	// resize font when window width is small
 	resizeTimerFont: function() {
 		if(window.innerWidth <= 450) {
 			this.hourOut.className = "timeValueSmall"
@@ -132,6 +133,18 @@ var UIManager = {
 			this.hourOut.className = "timeValue"
 			this.minOut.className = "timeValue"
 			this.secOut.className = "timeValue"
+		}
+	},
+	
+	// change button style according to mode
+	toggleButtonStyle: function(mode) {
+		// 1 = pressed/down
+		// 0 = released/up
+		if(mode == 1) {
+			this.buttonToggle.className = "togglerDown"
+		}
+		else {
+			this.buttonToggle.className = "togglerUp";	
 		}
 	}
 
