@@ -83,26 +83,6 @@ span.error {
 	font-size: 0.7em;
 	font-style:italic;
 }
-.timeBox {
-	float:left;
-	width:32%;
-	text-align:center;
-	margin-right:2%;
-	margin-bottom: 2.5%;
-	padding:15px 0;
-}
-.lastBox {
-	margin-right:0;
-}
-.timeBox span {
-	display:block;
-}
-.timeValue { 
-	font-size:100px;
-}
-.timeValueSmall {
-	font-size:60px;
-}
 .button {
 	display:inline-block;
 	margin:4px;
@@ -110,6 +90,7 @@ span.error {
 	border: 1px solid black;
 	border-radius: 6px;
 	box-shadow: black 0 0 2px;
+	vertical-align: middle;
 }
 .buttonUp {
 	background-color:rgba(0, 0, 0, 0.3);
@@ -117,13 +98,3 @@ span.error {
 .buttonDown {
 	background-color:rgba(0, 0, 0, 0.6);
 }
-#toggler {
-	clear:both;
-	display:block;
-	margin:0;
-	padding: 2px 0 2px 0;
-	width:100%;
-	text-align:center;
-}
-
-
