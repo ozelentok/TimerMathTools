@@ -10,12 +10,7 @@
 	</head>
 	<body>
 		<div id="header">
-			<h1>Oz Elentok's Site</h1>
-		</div>
-		<div id="nav">
-			<ul>
-				<li><a id="first" href=".">Utills</a></li><li><a href="./timer/">Timer</a></li><li><a href="http://bitbucket.org/ozelentok">Repository</a></li>
-			</ul>
+			<h1>Utilities</h1>
 		</div>
 		<div id="wrapper">
 			<div class="utill" id="quadEquation">
@@ -30,7 +25,7 @@
 				<label for="c_quadeq">c:</label>
 				<input type="text" id="c_quadeq" class="numericBox">
 			
-				<label class="button buttonUp" onclick="boxValidator.checkQuadBoxes();">Solve</label>
+				<a href="#" class="button buttonUp" onclick="boxValidator.checkQuadBoxes();">Solve</a>
 				<br>
 				<span class="error" id="quadErrorMessage"></span>
 				<span class="result" id="quadResults"></span>
@@ -49,7 +44,7 @@
 				<label for="successes">K success:</label>
 				<input type="text" id="successes" class="numericBox">
 			
-				<label class="button buttonUp" onclick="boxValidator.checkBinomialBoxes();">Calculate</label>
+				<a href="#" class="button buttonUp" onclick="boxValidator.checkBinomialBoxes();">Calculate</a>
 				<br>
 				<span class="error" id="bionErrorMessage"></span>
 				<span class="result" id="bionResult"></span>
@@ -71,7 +66,7 @@
 				<input type="checkbox" id="nums" checked="checked">
 				<label for="nums">Numbers</label>
 			
-				<label class="button buttonUp" onclick="boxValidator.checkPassGenBoxes();">Generate</label>
+				<a href="#" class="button buttonUp" onclick="boxValidator.checkPassGenBoxes();">Generate</a>
 				<br>
 				<span class="error" id="passGenErrorMessage"></span>
 				<span class="result" id="passGenResults"></span>
@@ -82,7 +77,7 @@
 				<p id="convFormat">eg. 15 km to m</p>
 				
 				<input type="text" id="convText">
-				<label class="button buttonUp" onclick="boxValidator.checkConvertBoxes();">Convert</label>
+				<a href="#" class="button buttonUp" onclick="boxValidator.checkConvertBoxes();">Convert</a>
 				<br>
 				<span class="error" id="convertErrorMessage"></span>
 				<span class="result" id="convertResults"></span>

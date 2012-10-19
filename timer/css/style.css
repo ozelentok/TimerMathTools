@@ -34,18 +34,32 @@ body {
 	display:block;
 }
 .timeValue { 
-	font-size:150px;
+	font-size:130px;
 }
 .timeValueSmall {
-	font-size:60px;
+	font-size:70px;
+}
+#instruction {
+	font-size:80%;
+	display: block;
+	padding: 5px 0;
+	color: rgba(255, 255, 255, 0.6);
+	text-align: center;
 }
 .button {
-	display:inline-block;
+	display:block;
 	margin:4px;
 	padding: 2px 10px 2px 10px;
 	border: 1px solid black;
 	border-radius: 6px;
 	box-shadow: black 0 0 2px;
+}
+a {
+	color: white;
+	text-decoration:none;
+}
+a:hover {
+	color: cyan;
 }
 .buttonUp {
 	background-color:rgba(0, 0, 0, 0.3);
