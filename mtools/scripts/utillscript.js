@@ -1,5 +1,6 @@
-"use strict";
-var mathSolver = {
+'use strict';
+var MT = {};
+MT.mathSolver = {
 	// Returns solutions to quadric equation
 	solveQuadric: function (a, b, c) {
 		var solutions = [];
@@ -68,9 +69,9 @@ var mathSolver = {
 
 
 
-var passGen = {
+MT.passGenerator = {
 	
-	db: [ "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789" ],
+	db: [ 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '0123456789' ],
 	
 	// Generates a password according to allowed characters
 	// lc - lower case
@@ -80,7 +81,7 @@ var passGen = {
 		var bank = []; // characters database
 		var bankLimits = []; // current number of characters for each type
 		var limit;
-		var pass = "";
+		var pass = '';
 		var chIndex = 0;
 		var chType;
 		var loc = 0;
@@ -112,7 +113,7 @@ var passGen = {
 };
 
 
-var unitConverter = {
+MT.unitConverter = {
 
 	unitBank: {	'len': { 'm': 1, 'km': 1E3, 'cm': 1E-2, 'mm': 1E-3, 'in': 2.54E-2, 'foot': 0.3048, 'yard': 0.9144, 'mile': 1609}, 
 							'area': { 'm2': 1, 'km2': 1E9, 'cm2': 1E-4, 'mm2': 1E-9, 'in2': 6.4516E-4, 'foot2': 0.0929, 'yard2': 0.8361, 'mile2': 2.5888E6},
@@ -141,7 +142,7 @@ var unitConverter = {
 	// sourceValue - numeric value of the sourceUnit
 	// returns the value of sourceValue in result unit
 	calcOutUnit: function(type, sourceUnit, resultUnit, sourceValue) {
-		var resultValue = sourceValue
+		var resultValue = sourceValue;
 		resultValue *= this.unitBank[type][sourceUnit]; // turn value to it's according SI unit
 		resultValue /= this.unitBank[type][resultUnit]; // turn value to result unit
 		return resultValue;
@@ -150,29 +151,28 @@ var unitConverter = {
 };
 
 // checks if input boxes are vaild
-var boxValidator = {
-
-
+MT.boxValidator = {
+	
 	checkQuadBoxes: function() {
 		var a, b, c;
-		a = parseFloat(document.getElementById("a_quadeq").value);
-		b = parseFloat(document.getElementById("b_quadeq").value);
-		c = parseFloat(document.getElementById("c_quadeq").value);
+		a = parseFloat($('#a_quadeq').val());
+		b = parseFloat($('#b_quadeq').val());
+		c = parseFloat($('#c_quadeq').val());
 		if (isNaN(a) || isNaN(b) || isNaN(c)) {
-			document.getElementById("quadErrorMessage").innerHTML = "ERROR! Numbers Only!";
-			document.getElementById("quadResults").innerHTML = "";
+			$('#quadErrorMessage').html('ERROR! Numbers Only!');
+			$('#quadResults').html('');
 		}
 		else {
-			document.getElementById("quadErrorMessage").innerHTML = "";
-			var results = mathSolver.solveQuadric(a, b, c);
+			$('#quadErrorMessage').html('');
+			var results = MT.mathSolver.solveQuadric(a, b, c);
 			if(results.length == 2) {
-				document.getElementById("quadResults").innerHTML = "Solutions:<br> " + results[0].toFixed(3) + "<br /> " + results[1].toFixed(3);
+				$('#quadResults').html('Solutions:<br> ' + results[0].toFixed(3) + '<br /> ' + results[1].toFixed(3));
 			}
 			else if(results.length == 1) {
-				document.getElementById("quadResults").innerHTML = "Solution:<br> " + results[0].toFixed(3);
+				$('#quadResults').html('Solution:<br> ' + results[0].toFixed(3));
 			}
 			else {
-				document.getElementById("quadResults").innerHTML = "No Solutions";
+				$('#quadResults').html('No Solutions');
 			}
 		}
 	}, // checkQuadBoxes
@@ -181,21 +181,21 @@ var boxValidator = {
 	
 	checkBinomialBoxes: function() {
 		var p, n, k;
-		p = parseFloat(document.getElementById("prob").value);
-		n = parseFloat(document.getElementById("trials").value);
-		k = parseFloat(document.getElementById("successes").value);
+		p = parseFloat($('#prob').val());
+		n = parseFloat($('#trials').val());
+		k = parseFloat($('#successes').val());
 		if (isNaN(p) || isNaN(n) || isNaN(k)) {
-			document.getElementById("bionErrorMessage").innerHTML = "ERROR! Numbers Only!";
-			document.getElementById("bionResult").innerHTML = "";
+			$('#bionErrorMessage').html('ERROR! Numbers Only!');
+			$('#bionResult').html('');
 		}
 		else if (n < 0 || k < 0 || k > n || n % 1 != 0 || k % 1 != 0) {
-			document.getElementById("bionErrorMessage").innerHTML = "ERROR! Non-Negative Integers Only!(and N \u2265 K)";
-			document.getElementById("bionResult").innerHTML = "";
+			$('#bionErrorMessage').html('ERROR! Non-Negative Integers Only!(and N \u2265 K)');
+			$('#bionResult').html('');
 		}
 		else {
-			document.getElementById("bionErrorMessage").innerHTML = "";
-			var result = mathSolver.calcBinominal(p, n, k);
-			document.getElementById("bionResult").innerHTML = "Binomial probability: " + result.toFixed(5);
+			$('#bionErrorMessage').html('');
+			var result = MT.mathSolver.calcBinominal(p, n, k);
+			$('#bionResult').html('Binomial probability: ' + result.toFixed(5));
 		}
 	}, // checkBinomialBoxes
 
@@ -203,23 +203,23 @@ var boxValidator = {
 
 	checkPassGenBoxes: function() {
 		var lowcase, upcase, nums;
-		lowcase = document.getElementById("lcase").checked;
-		upcase = document.getElementById("ucase").checked;
-		nums = document.getElementById("nums").checked;
+		lowcase = $('#lcase').attr('checked');
+		upcase = $('#ucase').attr('checked');
+		nums = $('#nums').attr('checked');
 		if(!lowcase && !upcase && !nums) {
-			document.getElementById("passGenErrorMessage").innerHTML = "ERROR! at least one option must be enabled";
-			document.getElementById("passGenResults").innerHTML = "";
+			$('#passGenErrorMessage').html('ERROR! at least one option must be enabled');
+			$('#passGenResults').html('');
 		}
 		else {
-			var passLen = parseInt(document.getElementById("plen").value);
+			var passLen = parseInt($('#plen').val());
 			if(isNaN(passLen) || passLen <= 0) {
-				document.getElementById("passGenErrorMessage").innerHTML = "ERROR! Positive Integers Only!"
-				document.getElementById("passGenResults").innerHTML = "";
+				$('#passGenErrorMessage').html('ERROR! Positive Integers Only!');
+				$('#passGenResults').html('');
 			}
 			else {
-				var passw = passGen.generate(passLen, lowcase, upcase, nums);
-				document.getElementById("passGenErrorMessage").innerHTML = "";
-				document.getElementById("passGenResults").innerHTML = passw;
+				var passw = MT.passGenerator.generate(passLen, lowcase, upcase, nums);
+				$('#passGenErrorMessage').html('');
+				$('#passGenResults').html(passw);
 			}
 		}
 	}, // checkPassGenBoxes
@@ -230,51 +230,56 @@ var boxValidator = {
 	convPattern: /(\d+\.?\d*)\s*(\w+)\s+to\s+(\w+)/,
 	
 	checkConvertBoxes: function() {
-		var text = document.getElementById("convText").value;
+		var text = $('#convText').val();
 		var patResult = text.match(this.convPattern);
 		if(!patResult) {
-			document.getElementById("convertErrorMessage").innerHTML = "ERROR! Incorrect Format";
-			document.getElementById("convertResults").innerHTML = "";
+			$('#convertErrorMessage').html('ERROR! Incorrect Format');
+			$('#convertResults').html('');
 		}
 		else {
 			var number = parseFloat(patResult[1]);
 			var fromUnit = patResult[2];
 			var toUnit = patResult[3];
-			var fromType = unitConverter.findType(fromUnit);
-			var toType = unitConverter.findType(toUnit);
+			var fromType = MT.unitConverter.findType(fromUnit);
+			var toType = MT.unitConverter.findType(toUnit);
 			if(!fromType || !toType) {
-				document.getElementById("convertErrorMessage").innerHTML = "ERROR! Unsupported Units";
-				document.getElementById("convertResults").innerHTML = "";
+				$('#convertErrorMessage').html('ERROR! Unsupported Units');
+				$('#convertResults').html('');
 			}
 			else if(fromType != toType) {
-				document.getElementById("convertErrorMessage").innerHTML = "ERROR! Units from diffrent base quantities";
-				document.getElementById("convertResults").innerHTML = "";
+				$('#convertErrorMessage').html('ERROR! Units from diffrent base quantities');
+				$('#convertResults').html('');
 			}
 			else {
-				document.getElementById("convertErrorMessage").innerHTML = "";
-				var resultVal = unitConverter.calcOutUnit(fromType, fromUnit, toUnit, number);
-				document.getElementById("convertResults").innerHTML = resultVal + " " + toUnit;
+				var resultVal = MT.unitConverter.calcOutUnit(fromType, fromUnit, toUnit, number);
+				$('#convertErrorMessage').html('');
+				$('#convertResults').html(resultVal + ' ' + toUnit);
 			}
 		}
 	}
 };
 
-var UIManager = {
+$(function() {
 
-	// change button style according to mode
-	toButtonUp: function(button) {
-			button.className = "button buttonUp";	
-	},
-	toButtonDown: function(button) {
-			button.className = "button buttonDown";	
-	}
-};
-
-(function() {
-	var buttons = document.getElementsByClassName("button");
-	for (var i = 0; i < buttons.length; i += 1) {
-		buttons[i].onmouseup = function() { UIManager.toButtonUp(this) };
-		buttons[i].onmouseleave = function() { UIManager.toButtonUp(this) };
-		buttons[i].onmousedown = function() { UIManager.toButtonDown(this); };
-	}
-})();
+	$('#quadButton').bind('click', function () {
+		MT.boxValidator.checkQuadBoxes();
+	});
+	$('#chanceButton').bind('click', function () {
+		MT.boxValidator.checkBinomialBoxes();
+	});
+	$('#passGenButton').bind('click', function () {
+		MT.boxValidator.checkPassGenBoxes();
+	});
+	$('#convertButton').bind('click', function () {
+		MT.boxValidator.checkConvertBoxes();
+	});
+	$('.button').each(function () {
+		var self = $(this);
+		self.bind('mouseup mouseleave', function () {
+			self.removeClass('buttonDown').addClass('buttonUp');	
+		});
+		self.bind('mousedown', function () {
+			self.removeClass('buttonUp').addClass('buttonDown');	
+		});
+	});
+});

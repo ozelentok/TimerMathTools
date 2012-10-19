@@ -25,7 +25,7 @@
 				<label for="c_quadeq">c:</label>
 				<input type="text" id="c_quadeq" class="numericBox">
 			
-				<a href="#" class="button buttonUp" onclick="boxValidator.checkQuadBoxes();">Solve</a>
+				<a href="#quadEquation" id="quadButton" class="button buttonUp">Solve</a>
 				<br>
 				<span class="error" id="quadErrorMessage"></span>
 				<span class="result" id="quadResults"></span>
@@ -44,7 +44,7 @@
 				<label for="successes">K success:</label>
 				<input type="text" id="successes" class="numericBox">
 			
-				<a href="#" class="button buttonUp" onclick="boxValidator.checkBinomialBoxes();">Calculate</a>
+				<a href="#probabilityCalc" id="chanceButton" class="button buttonUp">Calculate</a>
 				<br>
 				<span class="error" id="bionErrorMessage"></span>
 				<span class="result" id="bionResult"></span>
@@ -66,7 +66,7 @@
 				<input type="checkbox" id="nums" checked="checked">
 				<label for="nums">Numbers</label>
 			
-				<a href="#" class="button buttonUp" onclick="boxValidator.checkPassGenBoxes();">Generate</a>
+				<a href="#passGenerator" id="passGenButton" class="button buttonUp">Generate</a>
 				<br>
 				<span class="error" id="passGenErrorMessage"></span>
 				<span class="result" id="passGenResults"></span>
@@ -77,7 +77,7 @@
 				<p id="convFormat">eg. 15 km to m</p>
 				
 				<input type="text" id="convText">
-				<a href="#" class="button buttonUp" onclick="boxValidator.checkConvertBoxes();">Convert</a>
+				<a href="#unitConverter" id="convertButton" class="button buttonUp">Convert</a>
 				<br>
 				<span class="error" id="convertErrorMessage"></span>
 				<span class="result" id="convertResults"></span>
@@ -86,6 +86,7 @@
 		<div id="footer">
 			Copyrights &copy; Oz Elentok. All Rights Reserved.
 		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="scripts/utillscript.js"></script>
 	</body>
 </html>
