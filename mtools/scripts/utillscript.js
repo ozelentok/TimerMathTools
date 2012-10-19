@@ -261,16 +261,20 @@ MT.boxValidator = {
 
 $(function() {
 
-	$('#quadButton').bind('click', function () {
+	$('#quadButton').bind('click', function (e) {
+		e.preventDefault();
 		MT.boxValidator.checkQuadBoxes();
 	});
-	$('#chanceButton').bind('click', function () {
+	$('#chanceButton').bind('click', function (e) {
+		e.preventDefault();
 		MT.boxValidator.checkBinomialBoxes();
 	});
-	$('#passGenButton').bind('click', function () {
+	$('#passGenButton').bind('click', function (e) {
+		e.preventDefault();
 		MT.boxValidator.checkPassGenBoxes();
 	});
-	$('#convertButton').bind('click', function () {
+	$('#convertButton').bind('click', function (e) {
+		e.preventDefault();
 		MT.boxValidator.checkConvertBoxes();
 	});
 	$('.button').each(function () {

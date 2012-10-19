@@ -1,6 +1,6 @@
-"use strict";
-
-var timeController = {
+'use strict';
+var TM = {};
+TM.timeController = {
 	
 	timerInt: null,
 	targetTime: null,
@@ -8,7 +8,7 @@ var timeController = {
 	hours: 0,
 	mins: 0,
 	secs: 0,
-	alarm: new Audio("audio/alarm.ogg"),
+	alarm: new Audio('audio/alarm.ogg'),
 	
 	startCountdown : function() {
 		if (this.secs == 0 && this.hours + this.mins == 0) {
@@ -17,7 +17,7 @@ var timeController = {
 		this.paused = false;
 		this.targetTime = new Date(Date.now() + (((this.hours * 60 + this.mins) * 60 + this.secs) * 1000) - 10);
 		this.timerInt = window.setInterval(function() {
-			timeController.tick(); } , 1000);
+			TM.timeController.tick(); } , 1000);
 		return true;
 	},
 	
@@ -44,22 +44,22 @@ var timeController = {
 		if (this.hours < 0) {
 			this.hours += 24;
 		}
-		UIManager.updateOutput();
+		TM.UIManager.updateOutput();
 		if (this.secs == 0 && this.mins + this.hours == 0 || currentTime >= this.targetTime) {
 			window.clearInterval(this.timerInt);
-			UIManager.toggleCountdown();
+			TM.UIManager.toggleCountdown();
 			this.alarm.play();
 		}
 		
 	} // tick end
 };
 
-var UIManager = {
+TM.UIManager = {
 	
-	hourOut: document.getElementById("hourDisp"),
-	minOut: document.getElementById("minDisp"),
-	secOut: document.getElementById("secDisp"),
-	buttonToggle: document.getElementById("toggler"),
+	hourOut: $('#hourDisp'),
+	minOut: $('#minDisp'),
+	secOut: $('#secDisp'),
+	buttonToggle: $('#toggler'),
 
 	formatNum : function(num) {
 		if (num >= 10)
@@ -68,88 +68,105 @@ var UIManager = {
 	},
 
 	updateOutput: function() {
-		this.hourOut.innerHTML = this.formatNum(timeController.hours);
-		this.minOut.innerHTML = this.formatNum(timeController.mins);
-		this.secOut.innerHTML = this.formatNum(timeController.secs);
+		this.hourOut.html(this.formatNum(TM.timeController.hours));
+		this.minOut.html(this.formatNum(TM.timeController.mins));
+		this.secOut.html(this.formatNum(TM.timeController.secs));
 	},
 
 	toggleCountdown: function() {
-		if (timeController.paused) {
-			if (timeController.startCountdown()) {
-				this.buttonToggle.innerHTML = "Stop Countdown";
+		if (TM.timeController.paused) {
+			if (TM.timeController.startCountdown()) {
+				this.buttonToggle.innerHTML = 'Stop Countdown';
 			}
 		}
 		else {
-			timeController.stopCountdown();
-			this.buttonToggle.innerHTML = "Start Countdown";
+			TM.timeController.stopCountdown();
+			this.buttonToggle.innerHTML = 'Start Countdown';
 		}
 	},
 	
 	// function called from clicks on time boxes
 	getHours: function() {
-		if (!timeController.paused) {
+		if (!TM.timeController.paused) {
 			return;
 		}
-		var hours = parseInt(prompt("Enter Hours"), 10);
+		var hours = parseInt(prompt('Enter Hours'), 10);
 		if (isNaN(hours) || hours < 0) {
 			hours = 0;
 		}
-		timeController.hours = hours;
+		TM.timeController.hours = hours;
 		this.updateOutput();
 	},
 
 	getMinutes: function() {
-		if (!timeController.paused) {
+		if (!TM.timeController.paused) {
 			return;
 		}
-		var minutes = parseInt(prompt("Enter Minutes"), 10);
+		var minutes = parseInt(prompt('Enter Minutes'), 10);
 		if (isNaN(minutes) || minutes < 0) {
 			minutes = 0;
 		}
-		timeController.mins = minutes;
+		TM.timeController.mins = minutes;
 		this.updateOutput();
 	},
 
 	getSeconds: function() {
-		if (!timeController.paused) {
+		if (!TM.timeController.paused) {
 			return;
 		}
-		var seconds = parseInt(prompt("Enter Seconds"), 10);
+		var seconds = parseInt(prompt('Enter Seconds'), 10);
 		if (isNaN(seconds) || seconds < 0) {
 			seconds = 0;
 		}
-		timeController.secs = seconds;
+		TM.timeController.secs = seconds;
 		this.updateOutput();
 	},
 
 	// resize font when window width is small
 	resizeTimerFont: function() {
 		if(window.innerWidth <= 450) {
-			this.hourOut.className = "timeValueSmall";
-			this.minOut.className = "timeValueSmall";
-			this.secOut.className = "timeValueSmall";
+			this.hourOut.removeClass('timeValue').addClass('timeValueSmall');	
+			this.minOut.removeClass('timeValue').addClass('timeValueSmall');	
+			this.secOut.removeClass('timeValue').addClass('timeValueSmall');	
 		}
 		else {
-			this.hourOut.className = "timeValue";
-			this.minOut.className = "timeValue";
-			this.secOut.className = "timeValue";
+			this.hourOut.removeClass('timeValueSmall').addClass('timeValue');	
+			this.minOut.removeClass('timeValueSmall').addClass('timeValue');	
+			this.secOut.removeClass('timeValueSmall').addClass('timeValue');	
 		}
 	},
-	
-	// change button style according to mode
-	toButtonUp: function(button) {
-			button.className = "button buttonUp";	
-	},
-	toButtonDown: function(button) {
-			button.className = "button buttonDown";	
-	}
-
 };
-(function() {
-	document.body.onload = function() { UIManager.resizeTimerFont(); };
-	document.body.onresize = function() { UIManager.resizeTimerFont(); };
-	UIManager.buttonToggle.onmouseup = function() { UIManager.toButtonUp(this) };
-	UIManager.buttonToggle.onmouseleave = function() { UIManager.toButtonUp(this) };
-	UIManager.buttonToggle.onmousedown = function() { UIManager.toButtonDown(this); };
-})();
+$(function() {
+	$('body').ready(function() {
+		TM.UIManager.resizeTimerFont();
+	});
+	$('body').resize(function() {
+		TM.UIManager.resizeTimerFont();
+	});
+	$('#hourDisp').bind('click', function (e) {
+		e.preventDefault();
+		TM.UIManager.getHours();
+	});
+	$('#minDisp').bind('click', function (e) {
+		e.preventDefault();
+		TM.UIManager.getMinutes();
+	});
+	$('#secDisp').bind('click', function (e) {
+		e.preventDefault();
+		TM.UIManager.getSeconds();
+	});
+	$('#toggler').bind('click', function (e) {
+		e.preventDefault();
+		TM.UIManager.toggleCountdown();
+	});
+	$('.button').each(function () {
+		var self = $(this);
+		self.bind('mouseup mouseleave', function () {
+			self.removeClass('buttonDown').addClass('buttonUp');	
+		});
+		self.bind('mousedown', function () {
+			self.removeClass('buttonUp').addClass('buttonDown');	
+		});
+	});
+});
 

@@ -11,25 +11,26 @@
 	<body>
 		<div id="wrapper">
 			<div id="dispTime">
-				<div class="timeBox" onclick="UIManager.getHours();">
+				<div class="timeBox">
 					<span class="timeHeader">Hours</span>
 					<span class="timeValue" id="hourDisp">00</span>
 				</div>
-				<div class="timeBox" onclick="UIManager.getMinutes();">
+				<div class="timeBox">
 					<span class="timeHeader">Minutes</span>
 					<span class="timeValue" id="minDisp">00</span>
 				</div>
-				<div class="timeBox lastBox" onclick="UIManager.getSeconds();">
+				<div class="timeBox lastBox">
 					<span class="timeHeader">Seconds</span>
 					<span class="timeValue" id="secDisp">00</span>
 				</div>
 			</div>
 			<span id="instruction">click on the value to change it</span>
-			<a href="#" id="toggler" class="button buttonUp" onclick="UIManager.toggleCountdown();">Start Countdown</a>
+			<a href="#" id="toggler" class="button buttonUp">Start Countdown</a>
 		</div>
 		<div id="footer">
 			Copyrights &copy; Oz Elentok. All Rights Reserved.
 		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="scripts/tscript.js"></script>
 	</body>
 </html>
