@@ -140,7 +140,7 @@ $(function() {
 	$('body').ready(function() {
 		TM.UIManager.resizeTimerFont();
 	});
-	$('body').resize(function() {
+	$(window).resize(function() {
 		TM.UIManager.resizeTimerFont();
 	});
 	$('#hourDisp').bind('click', function (e) {
