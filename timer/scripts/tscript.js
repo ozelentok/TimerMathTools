@@ -76,12 +76,12 @@ TM.UIManager = {
 	toggleCountdown: function() {
 		if (TM.timeController.paused) {
 			if (TM.timeController.startCountdown()) {
-				this.buttonToggle.innerHTML = 'Stop Countdown';
+				this.buttonToggle.html('Stop Countdown');
 			}
 		}
 		else {
 			TM.timeController.stopCountdown();
-			this.buttonToggle.innerHTML = 'Start Countdown';
+			this.buttonToggle.html('Start Countdown');
 		}
 	},
 	
