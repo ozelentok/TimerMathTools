@@ -29,7 +29,8 @@ label {
 	margin:0 0 80px 0;
 }
 #contentContainer {
-	margin: 20px;
+	margin: auto 20px;
+	width: auto;
 }
 .numericBox {
 	width:4em;
