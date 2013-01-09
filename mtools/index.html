@@ -6,13 +6,24 @@
 		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<div id="header">
-			<h1>Utilities</h1>
-		</div>
-		<div id="wrapper">
+		<div class="navbar">
+      		<div class="navbar-inner">
+        		<div class="container">
+         			 <a href="#" class="brand">Oz Utillities</a>
+         			 <div class="nav-collapse collapse">
+            			<ul class="nav">
+              				<li class="active"><a href="#">Home</a></li>
+              				<li><a href="http://ozelentok.net76.net">About</a></li>
+            			</ul>
+          			</div>
+        		</div>
+     		 </div>
+    	</div>
+		<div id="contentContainer" class="container">
 			<div class="utill" id="quadEquation">
 				<h2>Quadric Equation Solver <br> ax^2 + bx + c</h2>
 			
@@ -25,10 +36,9 @@
 				<label for="c_quadeq">c:</label>
 				<input type="text" id="c_quadeq" class="numericBox">
 			
-				<a href="#" id="quadButton" class="button buttonUp">Solve</a>
-				<br>
-				<span class="error" id="quadErrorMessage"></span>
-				<span class="result" id="quadResults"></span>
+				<a href="#" id="quadButton" class="btn btn-primary">Solve</a>
+				<span class="label label-important" id="quadErrorMessage"></span>
+				<span class="label label-success" id="quadResults"></span>
 			</div>
 		
 		
@@ -44,10 +54,9 @@
 				<label for="successes">K success:</label>
 				<input type="text" id="successes" class="numericBox">
 			
-				<a href="#" id="chanceButton" class="button buttonUp">Calculate</a>
-				<br>
-				<span class="error" id="bionErrorMessage"></span>
-				<span class="result" id="bionResult"></span>
+				<a href="#" id="chanceButton" class="btn btn-primary">Calculate</a>
+				<span class="label label-important" id="bionErrorMessage"></span>
+				<span class="label label-success" id="bionResult"></span>
 			</div>
 		
 			<div class="utill" id="passGenerator">
@@ -55,38 +64,40 @@
 			
 				<label for="plen">Password Length:</label>
 				<input type="text" id="plen" class="numericBox">
-				<br>
+				<div class="controls">
+				<label class="checkbox inline">
+					<input type="checkbox" id="lcase" checked="checked">Lowercase
+					</label>
 			
-				<input type="checkbox" id="lcase" checked="checked">
-				<label for="lcase">Lowercase</label>
+				<label class="checkbox inline">
+					<input type="checkbox" id="ucase" checked="checked">Uppercase
+				</label>
 			
-				<input type="checkbox" id="ucase" checked="checked">
-				<label for="ucase">Uppercase</label>
-			
-				<input type="checkbox" id="nums" checked="checked">
-				<label for="nums">Numbers</label>
-			
-				<a href="#" id="passGenButton" class="button buttonUp">Generate</a>
-				<br>
-				<span class="error" id="passGenErrorMessage"></span>
-				<span class="result" id="passGenResults"></span>
+				<label class="checkbox inline">
+					<input type="checkbox" id="nums" checked="checked"> Numbers
+				</label>
+				
+			</div>
+				<a href="#" id="passGenButton" class="btn btn-primary">Generate</a>
+				<span class="label label-important" id="passGenErrorMessage"></span>
+				<span class="label label-success" id="passGenResults"></span>
 			</div>
 			
 			<div class="utill" id="unitConverter">
 				<h2>Unit Converter</h2>
-				<p id="convFormat">eg. 15 km to m</p>
+				<p class="text-info" id="convFormat">eg. 15 km to m</p>
 				
 				<input type="text" id="convText">
-				<a href="#" id="convertButton" class="button buttonUp">Convert</a>
-				<br>
-				<span class="error" id="convertErrorMessage"></span>
-				<span class="result" id="convertResults"></span>
+				<a href="#" id="convertButton" class="btn btn-primary">Convert</a>
+				<span class="label label-important" id="convertErrorMessage"></span>
+				<span class="label label-success" id="convertResults"></span>
 			</div>
 		</div>
 		<div id="footer">
 			Copyrights &copy; Oz Elentok. All Rights Reserved.
 		</div>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 		<script type="text/javascript" src="scripts/utillscript.js"></script>
 	</body>
 </html>

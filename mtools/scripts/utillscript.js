@@ -71,7 +71,9 @@ MT.mathSolver = {
 
 MT.passGenerator = {
 	
-	db: [ 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '0123456789' ],
+	db: [ 'abcdefghijklmnopqrstuvwxyz',
+		  'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 
+		  '0123456789' ],
 	
 	// Generates a password according to allowed characters
 	// lc - lower case
