@@ -5,6 +5,7 @@ TM.timeController = {
 	timerInt: null,
 	targetTime: null,
 	paused: true,
+	timedOut: 1,
 	hours: 0,
 	mins: 0,
 	secs: 0,
@@ -24,15 +25,17 @@ TM.timeController = {
 	stopCountdown : function() {
 		window.clearInterval(this.timerInt);
 		this.targetTime = null;
+		this.timedOut = 1;
 		this.paused = true;
+		TM.UIManager.changeColor();
 	},
-	
 	
 	tick : function() {
 		var currentTime = new Date();
-		this.hours = this.targetTime.getUTCHours() - currentTime.getUTCHours();
-		this.mins = this.targetTime.getUTCMinutes() - currentTime.getUTCMinutes();
-		this.secs = this.targetTime.getUTCSeconds() - currentTime.getUTCSeconds();
+		this.hours = this.timedOut * (this.targetTime.getUTCHours() - currentTime.getUTCHours());
+		this.mins = this.timedOut * (this.targetTime.getUTCMinutes() - currentTime.getUTCMinutes());
+		this.secs = this.timedOut * (this.targetTime.getUTCSeconds() - currentTime.getUTCSeconds());
+		console.log(this.hours);
 		if (this.secs < 0) {
 			this.secs += 60;
 			this.mins -= 1;
@@ -41,16 +44,12 @@ TM.timeController = {
 			this.mins += 60;
 			this.hours -= 1;
 		}
-		if (this.hours < 0) {
-			this.hours += 24;
-		}
 		TM.UIManager.updateOutput();
-		if (this.secs == 0 && this.mins + this.hours == 0 || currentTime >= this.targetTime) {
-			window.clearInterval(this.timerInt);
-			TM.UIManager.toggleCountdown();
+		if (this.secs == 0 && this.mins + this.hours == 0) {
+			this.timedOut = -1;
+			TM.UIManager.changeColor(this.timedOut);
 			this.alarm.play();
 		}
-		
 	} // tick end
 };
 
@@ -73,6 +72,17 @@ TM.UIManager = {
 		this.secOut.html(this.formatNum(TM.timeController.secs));
 	},
 
+	changeColor: function(timedOut) {
+		if (timedOut == -1) {
+			this.hourOut.addClass('timeValueRed');
+			this.minOut.addClass('timeValueRed');	
+			this.secOut.addClass('timeValueRed');	
+		} else {
+			this.hourOut.removeClass('timeValueRed');
+			this.minOut.removeClass('timeValueRed');	
+			this.secOut.removeClass('timeValueRed');	
+		}
+	},
 	toggleCountdown: function() {
 		if (TM.timeController.paused) {
 			if (TM.timeController.startCountdown()) {
@@ -125,14 +135,14 @@ TM.UIManager = {
 	// resize font when window width is small
 	resizeTimerFont: function() {
 		if(window.innerWidth <= 450) {
-			this.hourOut.removeClass('timeValue').addClass('timeValueSmall');	
-			this.minOut.removeClass('timeValue').addClass('timeValueSmall');	
-			this.secOut.removeClass('timeValue').addClass('timeValueSmall');	
+			this.hourOut.removeClass('timeValueBig').addClass('timeValueSmall');	
+			this.minOut.removeClass('timeValueBig').addClass('timeValueSmall');	
+			this.secOut.removeClass('timeValueBig').addClass('timeValueSmall');	
 		}
 		else {
-			this.hourOut.removeClass('timeValueSmall').addClass('timeValue');	
-			this.minOut.removeClass('timeValueSmall').addClass('timeValue');	
-			this.secOut.removeClass('timeValueSmall').addClass('timeValue');	
+			this.hourOut.removeClass('timeValueSmall').addClass('timeValueBig');	
+			this.minOut.removeClass('timeValueSmall').addClass('timeValueBig');	
+			this.secOut.removeClass('timeValueSmall').addClass('timeValueBig');	
 		}
 	},
 };

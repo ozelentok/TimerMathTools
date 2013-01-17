@@ -33,7 +33,10 @@ body {
 .timeBox span {
 	display:block;
 }
-.timeValue { 
+.timeValueRed {
+	color: #F20;
+}
+.timeValueBig { 
 	font-size:130px;
 }
 .timeValueSmall {
