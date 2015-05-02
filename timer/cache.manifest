@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 17/01/2013 
+# 02/05/2015
 CACHE: 
 index.html
 audio/alarm.ogg
@@ -7,4 +7,3 @@ css/style.css
 css/metaltiles.jpg
 css/favicon.ico
 scripts/tscript.js
-scripts/jquery.min.js
