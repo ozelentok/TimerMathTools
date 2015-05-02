@@ -1,7 +1,7 @@
 'use strict';
 var TM = {};
 TM.timeController = {
-	
+
 	timerInt: null,
 	targetTime: null,
 	paused: true,
@@ -10,7 +10,7 @@ TM.timeController = {
 	mins: 0,
 	secs: 0,
 	alarm: new Audio('audio/alarm.ogg'),
-	
+
 	startCountdown : function() {
 		if (this.secs == 0 && this.hours + this.mins == 0) {
 			return false;
@@ -21,7 +21,7 @@ TM.timeController = {
 			TM.timeController.tick(); } , 1000);
 		return true;
 	},
-	
+
 	stopCountdown : function() {
 		window.clearInterval(this.timerInt);
 		this.targetTime = null;
@@ -29,13 +29,12 @@ TM.timeController = {
 		this.paused = true;
 		TM.UIManager.changeColor();
 	},
-	
+
 	tick : function() {
 		var currentTime = new Date();
 		this.hours = this.timedOut * (this.targetTime.getUTCHours() - currentTime.getUTCHours());
 		this.mins = this.timedOut * (this.targetTime.getUTCMinutes() - currentTime.getUTCMinutes());
 		this.secs = this.timedOut * (this.targetTime.getUTCSeconds() - currentTime.getUTCSeconds());
-		console.log(this.hours);
 		if (this.secs < 0) {
 			this.secs += 60;
 			this.mins -= 1;
@@ -48,13 +47,13 @@ TM.timeController = {
 		if (this.secs == 0 && this.mins + this.hours == 0) {
 			this.timedOut = -1;
 			TM.UIManager.changeColor(this.timedOut);
+			TM.UIManager.showFinishedNotification();
 			this.alarm.play();
 		}
 	} // tick end
 };
 
 TM.UIManager = {
-	
 	hourOut: $('#hourDisp'),
 	minOut: $('#minDisp'),
 	secOut: $('#secDisp'),
@@ -145,9 +144,32 @@ TM.UIManager = {
 			this.secOut.removeClass('timeValueSmall').addClass('timeValueBig');	
 		}
 	},
+
+	checkNotificationPermission : function() {
+		this.notificationAllowed = false;
+		if (!'Notification' in window)
+			return;
+		if (Notification.permission === 'granted') {
+			this.notificationAllowed = true
+			return;
+		}
+		var that = this;
+		Notification.requestPermission(function (permission) {
+			if (permission === 'granted')
+				that.notificationAllowed = true;
+		});
+	},
+
+	showFinishedNotification : function() {
+		if (!this.notificationAllowed)
+			return
+		var finishedNotification = new Notification("Timer Finished");
+	}
+
 };
 $(function() {
 	$('body').ready(function() {
+		TM.UIManager.checkNotificationPermission();
 		TM.UIManager.resizeTimerFont();
 	});
 	$(window).resize(function() {
